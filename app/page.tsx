@@ -1,5 +1,8 @@
 import Image from "next/image";
+import Main from "../components/main/Main"
 
 export default function Home() {
-  return <div>메인 페이지</div>;
+  return <div><>
+  <Main/>
+  </></div>;
 }
