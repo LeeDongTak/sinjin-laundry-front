@@ -1,10 +1,10 @@
-import React from "react";
-import Image from "next/image";
-import Kakaotalk from "../../assets/images/kakaotalk.png"
-import Phone from "../../assets/images/phone.png"
-import Message from "../../assets/images/message.png"
-import Plus from "../../assets/images/plus_icon.png"
-import Lock from "../../assets/images/lock_icon.png"
+import React from 'react';
+import Image from 'next/image';
+import Kakaotalk from '../../assets/images/kakaotalk.png';
+import Phone from '../../assets/images/phone.png';
+import Message from '../../assets/images/message.png';
+import Plus from '../../assets/images/plus_icon.png';
+import Lock from '../../assets/images/lock_icon.png';
 
 const Main= () => {
     return <div>
