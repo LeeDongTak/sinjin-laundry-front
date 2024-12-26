@@ -10,7 +10,8 @@ const Main= () => {
     return <div>
         <main>
             <div className="lg:hidden">
-            <div className="pt-[105px] pl-4 pb-[234px] text-white bg-[#d9d9d9] relative">
+            <div className='bg-[#d9d9d9]  relative'>
+            <div className="pt-[105px] pl-4 pb-[234px] text-white ">
                 <h2 className="text-4xl ">대형세탁전문</h2>
                 <h2 className="text-4xl font-bold">신진세탁기업</h2>
                 <div className="mt-[19px]">
@@ -19,7 +20,7 @@ const Main= () => {
                     </div>
                 </div>
 
-                    <div className="m-auto  w-full  mt-[180px] absolute bottom-0 flex justify-center gap-[10px]">
+                    <div className="m-auto  w-full  mt-[180px] absolute bottom-[-50px] flex justify-center gap-[10px]">
                     <div className="">
                         <button className="w-[108px] h-[108px]
                     bg-[#787878] text-center rounded-[10px] flex flex-col items-center justify-center">
@@ -47,8 +48,9 @@ const Main= () => {
                         </button>
                     </div>
                 </div>
+                </div>
                 {/* 고객문의 */}
-                <article className=" mx-4 m-auto mt-[134px]">
+                <article className=" px-4 m-auto pt-[134px]">
                 <div>
                     <div className="flex justify-between items-center">
                         <h3 className="font-bold text-lg">고객문의</h3>
@@ -122,73 +124,70 @@ const Main= () => {
                     </div>
 
                     {/* img list 영역 */}
-                    <div className="flex mt-4 ">
-                        <ul className="inline-flex flex-wrap justify-between w-full">
-                                <li className="flex flex-col gap-[10px] pb-5">
-                                <a href="" className="w-[108px] h-[108px]
-                                rounded-[5px] bg-[#E9E9E9]"></a>
-                                <span>이미지설명...</span>
-                                </li>
-                                <li className="flex flex-col gap-[10px] pb-5">
-                                <a href="" className="w-[108px] h-[108px]
-                                rounded-[5px] bg-[#E9E9E9]"></a>
-                                <span>이미지설명...</span>
-                                </li>
-                                <li className="flex flex-col gap-[10px] pb-5">
-                                <a href="" className="w-[108px] h-[108px]
-                                rounded-[5px] bg-[#E9E9E9]"></a>
-                                <span>이미지설명...</span>
-                                </li>
-                                <li className="flex flex-col gap-[10px] pb-5">
-                                <a href="" className="w-[108px] h-[108px]
-                                rounded-[5px] bg-[#E9E9E9]"></a>
-                                <span>이미지설명...</span>
-                                </li>
-                                <li className="flex flex-col gap-[10px]">
-                                <a href="" className="w-[108px] h-[108px]
-                                rounded-[5px] bg-[#E9E9E9]"></a>
-                                <span>이미지설명...</span>
-                                </li>
-                                <li className="flex flex-col gap-[10px]">
-                                <a href="" className="w-[108px] h-[108px]
-                                rounded-[5px] bg-[#E9E9E9]"></a>
-                                <span>이미지설명...</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
+                    <div className="mt-4">
+    <ul className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 gap-[10px] w-full">
+        <li className="flex flex-col gap-[10px]">
+            <a href="" className=" w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
+            <span>이미지설명...</span>
+        </li>
+        <li className="flex flex-col gap-[10px] ">
+            <a href="" className="w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
+            <span>이미지설명...</span>
+        </li>
+        <li className="flex flex-col gap-[10px]">
+            <a href="" className=" w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
+            <span>이미지설명...</span>
+        </li>
+        <li className="flex flex-col gap-[10px] ">
+            <a href="" className="w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
+            <span>이미지설명...</span>
+        </li>
+        <li className="flex flex-col gap-[10px]">
+            <a href="" className=" w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
+            <span>이미지설명...</span>
+        </li>
+        <li className="flex flex-col gap-[10px] w-full aspect-square">
+            <a href="" className="w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
+            <span>이미지설명...</span>
+        </li>
+    </ul>
+</div>
+                </div>
+            </article>
             </div>
 
             {/* 1024 영역 */}
-            <div className="lg:block hidden">
-            <div className="pt-[191px] pl-[104px]  text-white bg-[#d9d9d9] flex flex-col
-            ">
-                <h2 className="text-6xl leading-[1.2]">대형세탁전문</h2>
-                <h2 className="text-6xl font-bold leading-[1.2]">신진세탁기업</h2>
-                <div className="mt-[19px] pb-[206px]">
-                    <a href="" className=" rounded-[25px] text-2xl
-                    px-[20px] py-[10px] bg-[#B7B7B7] text-center">호텔/모텔 세탁물 전문기업
-                    </a>
-                </div>
-                <div className="">
-                    <button className="flex flex-col gap-[18px]
-                    bg-[#202020] pt-[31px] pb-[32px] pl-[29px] pr-[30px]
-                    rounded-t-[10px]">
-                        <span className="text-2xl leading-none">문의전화</span>
-                        <span className="font-bold text-[34px] leading-none">010-9306-5918</span>
-                    </button>
-                </div>
-            </div>  
-
-            <div className="mx-5 m-auto bg-[#EFEFEF] mt-[29px] text-center rounded-[40px]">
-                <span className="text-xl leading-none px-[215px] py-[23px] inline-block ">
+            <div className="lg:block hidden ">
+                <div className='bg-[#D9D9D9]'>
+                    <div className="pt-[191px] pl-[104px]  text-white  flex flex-col
+                    max-w-[1024px] mx-auto ">
+                        <h2 className="text-6xl leading-[1.2]">대형세탁전문</h2>
+                        <h2 className="text-6xl font-bold leading-[1.2]">신진세탁기업</h2>
+                    <div className="mt-[19px] pb-[206px]">
+                        <a href="" className=" rounded-[25px] text-2xl
+                        px-[20px] py-[10px] bg-[#B7B7B7] text-center">호텔/모텔 세탁물 전문기업
+                        </a>
+                    </div>
+                    <div className="">
+                        <button className="flex flex-col gap-[18px]
+                        bg-[#202020] pt-[31px] pb-[32px] pl-[29px] pr-[30px]
+                        rounded-t-[10px]">
+                            <span className="text-2xl leading-none">문의전화</span>
+                            <span className="font-bold text-[34px] leading-none">010-9306-5918</span>
+                        </button>
+                    </div>
+                </div>  
+            </div>
+            <div className="flex justify-center bg-[#EFEFEF] mt-[29px]  rounded-[40px] max-w-[1024px]
+            mx-auto ">
+                <span className="text-xl leading-none py-[23px]  ">
                 가평 전지역 / 춘천 / 남양주 / 펜션.풀빌라.키즈.애견.연수원.리조트.모텔
                 </span>
             </div>
-
+          
             {/* 고객문의 */}
-            <article className=" mx-[104px] m-auto mt-20 pb-[120px] flex gap-[84px]">
+            <article className="mt-20 pb-[120px] flex gap-[84px] px-[104px]
+            max-w-[1024px] mx-auto">
                 <div className="flex flex-col gap-3 w-1/2">
                     <div className="flex justify-between items-center ">
                         <h3 className="font-bold text-lg">고객문의</h3>
@@ -254,7 +253,7 @@ const Main= () => {
 
                     {/* img list 영역 */}
                     <div className="flex shadow-[0_0_10px_rgba(0,0,0,0.15)]
-                    rounded-[10px] p-[25px] h-full">
+                    rounded-[10px] p-[25px] h-full overflow-hidden">
                         <ul className="flex justify-center  gap-[14px] h-full">
                             <li className="flex flex-col gap-[14px] ">
                                 <a href="" className="w-[108px] h-[108px]
@@ -271,6 +270,21 @@ const Main= () => {
                                 rounded-[5px] bg-[#E9E9E9]"></a>
                                 <span>이미지설명...</span>
                             </li>
+                           {/*  <li className="flex flex-col gap-[14px]">
+                                <a href="" className="w-[108px] h-[108px]
+                                rounded-[5px] bg-[#E9E9E9]"></a>
+                                <span>이미지설명...</span>
+                            </li>
+                            <li className="flex flex-col gap-[14px]">
+                                <a href="" className="w-[108px] h-[108px]
+                                rounded-[5px] bg-[#E9E9E9]"></a>
+                                <span>이미지설명...</span>
+                            </li>
+                            <li className="flex flex-col gap-[14px]">
+                                <a href="" className="w-[108px] h-[108px]
+                                rounded-[5px] bg-[#E9E9E9]"></a>
+                                <span>이미지설명...</span>
+                            </li> */}
                         </ul>
                     </div>
                 </div>
