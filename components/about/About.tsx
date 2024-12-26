@@ -5,11 +5,9 @@ import companyImage from '../../assets/images/company.png';
 const About = () => {
   return (
     <div className='w-full h-auto bg-white'>
-      <section>
-        <h1 className='mt-[20px] h-auto text-gray-800 text-[18px] font-bold md:text-[24px] md:mt-[40px]'>
-          인사말
-        </h1>
-      </section>
+      <h1 className='text-[24px] font-black mt-[20px] mb-[60px] md:mt-[40px] md:mb-[90px] w-full h-auto'>
+        인사말
+      </h1>
 
       <section className='mt-[30px] mb-[120px] md:mt-[90px] md:mb-[302px] flex flex-col md:flex-row md:justify-between gap-[20px]'>
         <Image
