@@ -76,8 +76,8 @@ const Header = () => {
         </div>
         <ul
           className={clsx(
-            `w-full md:w-auto h-[60px] md:h-auto flex items-center flex-wrap
-            font-normal md:font-bold text-[14px] md:text-[18px] gap-[0.35vw]
+            `w-full md:w-auto h-[60px] md:h-auto flex justify-between items-center flex-wrap
+            font-normal md:font-bold text-[14px] md:text-[18px] gap-[2px]
             md:gap-[37px] bg-white md:bg-inherit`,
             !isHome && "text-white"
           )}
@@ -88,7 +88,9 @@ const Header = () => {
                 key={id}
                 className={clsx(
                   "flex justify-center items-center bg-[#202020] md:bg-inherit md:w-auto h-[50%] md:h-auto",
-                  id === 3 || id === 4 ? "w-[49.82vw]" : "w-[33.1vw]"
+                  id === 3 || id === 4
+                    ? "w-[calc(50%-1px)]"
+                    : "w-[calc(33.1%-1px)]"
                 )}
               >
                 <Link
