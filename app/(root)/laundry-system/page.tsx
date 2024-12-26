@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 const LaundrySystemPage = () => {
   return (
     <div>
-      <div>세탁 시스템</div>
       <System />
     </div>
   );
