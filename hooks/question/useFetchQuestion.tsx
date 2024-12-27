@@ -18,7 +18,9 @@ const useFetchQuestion = (params: string) => {
     queryKey: ["question", params],
     queryFn: async () => {
       try {
-        const res = await axios(`http://localhost:3000/api/question/${params}`);
+        const res = await axios(
+          `${process.env.NEXT_PUBLIC_LOCAL_BASE_URL}/api/question/${params}`
+        );
         return res.data;
       } catch (error) {
         console.error(error);
