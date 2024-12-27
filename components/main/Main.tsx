@@ -125,33 +125,33 @@ const Main= () => {
 
                     {/* img list 영역 */}
                     <div className="mt-4">
-    <ul className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 gap-[10px] w-full">
-        <li className="flex flex-col gap-[10px]">
-            <a href="" className=" w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
-            <span>이미지설명...</span>
-        </li>
-        <li className="flex flex-col gap-[10px] ">
-            <a href="" className="w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
-            <span>이미지설명...</span>
-        </li>
-        <li className="flex flex-col gap-[10px]">
-            <a href="" className=" w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
-            <span>이미지설명...</span>
-        </li>
-        <li className="flex flex-col gap-[10px] ">
-            <a href="" className="w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
-            <span>이미지설명...</span>
-        </li>
-        <li className="flex flex-col gap-[10px]">
-            <a href="" className=" w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
-            <span>이미지설명...</span>
-        </li>
-        <li className="flex flex-col gap-[10px] w-full aspect-square">
-            <a href="" className="w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
-            <span>이미지설명...</span>
-        </li>
-    </ul>
-</div>
+                        <ul className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 gap-[10px] w-full">
+                            <li className="flex flex-col gap-[10px]">
+                                <a href="" className=" w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
+                                <span>이미지설명...</span>
+                            </li>
+                            <li className="flex flex-col gap-[10px] ">
+                                <a href="" className="w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
+                                <span>이미지설명...</span>
+                            </li>
+                            <li className="flex flex-col gap-[10px]">
+                                <a href="" className=" w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
+                                <span>이미지설명...</span>
+                            </li>
+                            <li className="flex flex-col gap-[10px] ">
+                                <a href="" className="w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
+                                <span>이미지설명...</span>
+                            </li>
+                            <li className="flex flex-col gap-[10px]">
+                                <a href="" className=" w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
+                                <span>이미지설명...</span>
+                            </li>
+                            <li className="flex flex-col gap-[10px] w-full aspect-square">
+                                <a href="" className="w-full aspect-square rounded-[5px] bg-[#E9E9E9]"></a>
+                                <span>이미지설명...</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </article>
             </div>
@@ -178,11 +178,13 @@ const Main= () => {
                     </div>
                 </div>  
             </div>
-            <div className="flex justify-center bg-[#EFEFEF] mt-[29px]  rounded-[40px] max-w-[1024px]
-            mx-auto ">
-                <span className="text-xl leading-none py-[23px]  ">
+            <div className='px-[20px] m-auto'>
+                <div className="flex justify-center bg-[#EFEFEF] mt-[29px]  rounded-[40px] max-w-[1024px]
+                mx-auto ">
+                    <span className="text-xl leading-none py-[23px]  ">
                 가평 전지역 / 춘천 / 남양주 / 펜션.풀빌라.키즈.애견.연수원.리조트.모텔
-                </span>
+                    </span>
+                </div>
             </div>
           
             {/* 고객문의 */}
