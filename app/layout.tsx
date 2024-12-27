@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/common/header";
+import Header from "../components/common/header";
 import localFont from "next/font/local";
 import Footer from "@/components/common/footer";
 import ReactQueryProviders from "@/provider/tanstackProvider";
