@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/common/header";
 import localFont from "next/font/local";
 import Footer from "@/components/common/footer";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ReactQueryProviders from "@/provider/tanstackProvider";
-
-const queryClient = new QueryClient();
 
 const pretendard = localFont({
   src: "../assets/font/PretendardVariable.woff2",
