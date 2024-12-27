@@ -1,4 +1,3 @@
-"use client";
 import LogoSVG from "@/assets/svg/logo";
 import SubLogo from "@/assets/svg/SubLogo";
 import clsx from "clsx";
