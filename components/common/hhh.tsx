@@ -1,3 +1,4 @@
+"use client";
 import LogoSVG from "@/assets/svg/logo";
 import SubLogo from "@/assets/svg/SubLogo";
 import clsx from "clsx";
@@ -5,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-const Header = () => {
+const Hhh = () => {
   const pathName = usePathname();
   const [isHome, setIsHome] = useState(true);
   const [bannerText, setBannerText] = useState("");
@@ -118,4 +119,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Hhh;
