@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/common/header";
+import Hhh from "@/components/common/hhh";
 import localFont from "next/font/local";
 import Footer from "@/components/common/footer";
 import ReactQueryProviders from "@/provider/tanstackProvider";
@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={pretendard.className}>
         <ReactQueryProviders>
-          <Header />
+          <Hhh />
           <main>{children}</main>
           <Footer />
         </ReactQueryProviders>
