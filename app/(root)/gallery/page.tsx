@@ -43,7 +43,7 @@ const GalleryPage = () => {
               className="flex flex-col items-start gap-[20px] w-[calc(50%-10px)] h-auto mb-[40px]"
             >
               <div className="bg-[#d9d9d9] w-full h-[136px] sm:h-[240px] rounded-lg"></div>
-              <p className="w-full text-[18px] font-normal overflow-hidden whitespace-nowrap text-ellipsis">
+              <p className="w-full text-[18px] font-medium overflow-hidden whitespace-nowrap text-ellipsis">
                 {title}
               </p>
             </li>

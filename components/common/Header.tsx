@@ -77,7 +77,7 @@ const Header = () => {
         <ul
           className={clsx(
             `w-full md:w-auto h-[60px] md:h-auto flex justify-between items-center flex-wrap
-            font-normal md:font-bold text-[14px] md:text-[18px] gap-[2px]
+            font-medium md:font-bold text-[14px] md:text-[18px] gap-[2px]
             md:gap-[37px] bg-white md:bg-inherit`,
             !isHome && "text-white"
           )}
