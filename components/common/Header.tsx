@@ -34,7 +34,7 @@ const Header = () => {
     {
       id: 4,
       name: "고객문의",
-      url: "/qna",
+      url: "/qna?page=1",
     },
   ];
   useEffect(() => {
@@ -43,6 +43,7 @@ const Header = () => {
     } else {
       setIsHome(false);
     }
+    if (pathName === "/") setBannerText("");
     if (pathName === "/about") setBannerText("회사소개");
     if (pathName === "/laundry-system") setBannerText("전문 세탁안내");
     if (pathName === "/location") setBannerText("오시는길");
@@ -87,7 +88,7 @@ const Header = () => {
               <li
                 key={id}
                 className={clsx(
-                  "flex justify-center items-center bg-[#202020] md:bg-inherit md:w-auto h-[50%] md:h-auto",
+                  "flex justify-center items-center bg-[#202020] text-white md:bg-inherit md:w-auto h-[50%] md:h-auto",
                   id === 3 || id === 4
                     ? "w-[calc(50%-1px)]"
                     : "w-[calc(33.1%-1px)]"
