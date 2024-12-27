@@ -88,7 +88,8 @@ const Header = () => {
               <li
                 key={id}
                 className={clsx(
-                  "flex justify-center items-center bg-[#202020] text-white md:bg-inherit md:w-auto h-[50%] md:h-auto",
+                  "flex justify-center items-center bg-[#202020] md:bg-inherit md:w-auto h-[50%] md:h-auto",
+                  isHome ? "text-black" : "text-white",
                   id === 3 || id === 4
                     ? "w-[calc(50%-1px)]"
                     : "w-[calc(33.1%-1px)]"

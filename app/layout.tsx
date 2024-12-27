@@ -4,6 +4,10 @@ import "./globals.css";
 import Header from "@/components/common/header";
 import localFont from "next/font/local";
 import Footer from "@/components/common/footer";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ReactQueryProviders from "@/provider/tanstackProvider";
+
+const queryClient = new QueryClient();
 
 const pretendard = localFont({
   src: "../assets/font/PretendardVariable.woff2",
@@ -23,9 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={pretendard.className}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <ReactQueryProviders>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </ReactQueryProviders>
       </body>
     </html>
   );
