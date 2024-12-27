@@ -74,7 +74,7 @@ const QnaContent = () => {
           }
         )}
       </ul>
-      <ul className="flex justify-center items-center gap-[12px]">
+      <ul className="flex justify-center items-center gap-[12px] mt-[40px]">
         {+params === 1 ? (
           <p className="w-[22px] h-[22px]"></p>
         ) : (

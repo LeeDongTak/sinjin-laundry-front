@@ -11,7 +11,7 @@ const Main = () => {
     <div>
       <main>
         <div className="lg:hidden">
-          <div className="bg-[#d9d9d9]  relative">
+          <div className="bg-bg-main-banner relative">
             <div className="pt-[105px] pl-4 pb-[234px] text-white ">
               <h2 className="text-4xl ">대형세탁전문</h2>
               <h2 className="text-4xl font-bold">신진세탁기업</h2>
