@@ -2,13 +2,14 @@
 import ArrowLeft from "@/assets/svg/ArrowLeft";
 import ArrowRight from "@/assets/svg/ArrowRight";
 import Lock from "@/assets/svg/lock";
+import useFetchQuestion from "@/hooks/question/useFetchQuestion";
 import clsx from "clsx";
 import dayjs from "dayjs";
 import { useSearchParams } from "next/navigation";
-import React, { useEffect } from "react";
+import React from "react";
 
 const QnaMain = () => {
-  const params = useSearchParams().get("page") ?? 1;
+  const params = useSearchParams().get("page") ?? "1";
   const QNA_LIST = [
     {
       id: 0,
@@ -32,7 +33,7 @@ const QnaMain = () => {
     {
       id: 2,
       question_title: "비밀글 입니다",
-      question_name: "비밀글 작성자 테스트",
+      question_name: "비밀�� 작성자 테스트",
       is_secret: 1,
       is_answer_done: 0,
       is_delete: 0,
@@ -102,13 +103,13 @@ const QnaMain = () => {
       created_at: "2024-12-23T15:18:21.000Z",
     },
   ];
-
+  const { data } = useFetchQuestion(params);
   const PAGE_NUMBER_LIST = [{ id: 0, pageNum: 1 }];
 
   return (
     <section className="md:mb-[300px] mb-[150px]">
       <ul>
-        {QNA_LIST.map(
+        {data?.map(
           ({
             id,
             question_title,
@@ -136,7 +137,9 @@ const QnaMain = () => {
                       >
                         {is_answer_done === 0 ? "미답변" : "답변"}
                       </span>
-                      {question_title}
+                      <span className="hover:text-[#fc5555] cursor-pointer">
+                        {question_title}
+                      </span>
                     </span>
                   </p>
                   {is_secret === 1 && (
