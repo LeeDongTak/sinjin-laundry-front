@@ -222,7 +222,7 @@ const Main = () => {
 
         {/* 1024 영역 */}
         <div className="lg:block hidden ">
-          <div className="bg-[#D9D9D9]">
+          <div className="bg-main-banner">
             <div
               className="pt-[191px] pl-[104px]  text-white  flex flex-col
                     max-w-[1024px] mx-auto "
@@ -233,7 +233,7 @@ const Main = () => {
                 <a
                   href=""
                   className=" rounded-[25px] text-2xl
-                        px-[20px] py-[10px] bg-[#B7B7B7] text-center"
+                        px-[20px] py-[10px] bg-[#0E5AA9] text-center"
                 >
                   호텔/모텔 세탁물 전문기업
                 </a>
@@ -241,7 +241,7 @@ const Main = () => {
               <div className="">
                 <button
                   className="flex flex-col gap-[18px]
-                        bg-[#202020] pt-[31px] pb-[32px] pl-[29px] pr-[30px]
+                        bg-[rgba(32,32,32,0.7)] pt-[31px] pb-[32px] pl-[29px] pr-[30px]
                         rounded-t-[10px]"
                 >
                   <span className="text-2xl leading-none">문의전화</span>
