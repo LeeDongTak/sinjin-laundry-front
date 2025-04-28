@@ -5,8 +5,9 @@ import Lock from "@/assets/svg/lock";
 import useFetchQuestion from "@/hooks/question/useFetchQuestion";
 import clsx from "clsx";
 import dayjs from "dayjs";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { Suspense } from "react";
+import PageNation from "../common/PageNation";
 
 const QnaMain = () => {
   return (
@@ -18,13 +19,25 @@ const QnaMain = () => {
 
 const QnaContent = () => {
   const params = useSearchParams().get("page") ?? "1";
+  const { push } = useRouter();
   const { data } = useFetchQuestion(params);
-  const PAGE_NUMBER_LIST = [{ id: 0, pageNum: 1 }];
+  const question = data?.data?.question;
+  const total = data?.data?.total;
+
+  const onClickDetailPage = (id: number) => {
+    push(`/qna/detail/${id}`);
+  };
+
+  const onClickAddQnA = () => {
+    push("/qna/add");
+  };
+
+  if (!data) return <></>;
 
   return (
     <section className="md:mb-[300px] mb-[150px]">
       <ul>
-        {data?.map(
+        {question?.map(
           ({
             id,
             question_title,
@@ -37,6 +50,7 @@ const QnaContent = () => {
               <li
                 key={id}
                 className="w-full h-[45px] md:h-[60px] flex justify-between items-center border-b border-solid border-[#f3f3f3]"
+                onClick={() => onClickDetailPage(id)}
               >
                 <div className="w-[80%] md:w-[60%] flex justify-start items-center gap-[9px] md:gap-[18px]">
                   <span className="font-medium text-[16px]">{id}</span>
@@ -74,31 +88,13 @@ const QnaContent = () => {
           }
         )}
       </ul>
-      <ul className="flex justify-center items-center gap-[12px] mt-[40px]">
-        {+params === 1 ? (
-          <p className="w-[22px] h-[22px]"></p>
-        ) : (
-          <p className="cursor-pointer w-[22px] h-[22px] flex justify-center items-center border border-solid border-[#adadad] hover:border-[2px] hover:font-bold">
-            <ArrowLeft />
-          </p>
-        )}
-        {PAGE_NUMBER_LIST.map(({ id, pageNum }) => {
-          return (
-            <li
-              key={id}
-              className={clsx(
-                "cursor-pointer w-[22px] h-[22px] flex justify-center items-center  border-solid border-[#adadad] text-[#adadad] hover:border-[2px] hover:font-bold",
-                +params === pageNum ? "border-[2px] font-bold" : "border"
-              )}
-            >
-              {pageNum}
-            </li>
-          );
-        })}
-        <p className="cursor-pointer w-[22px] h-[22px] flex justify-center items-center border border-solid border-[#adadad] hover:border-[2px] hover:font-bold">
-          <ArrowRight />
-        </p>
-      </ul>
+      <div className="flex justify-center items-center relative mt-[22px] h-[46px] ">
+        <PageNation total={total} />
+        <button
+          className="hidden md:flex absolute top-0 right-0 before:content-['글_작성'] md:before:content-['글_작성_하기'] font-bold md:text-[17px] md:px-[19px] md:h-[46px] justify-center items-center bg-[#0E5AA9] rounded-[5px] text-white text-[13px] px-[10px] h-[26px]"
+          onClick={onClickAddQnA}
+        />
+      </div>
     </section>
   );
 };
