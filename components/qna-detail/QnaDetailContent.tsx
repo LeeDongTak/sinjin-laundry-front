@@ -6,11 +6,12 @@ import { useRouter } from "next/navigation";
 
 const QnaDetailContent = ({ data }: { data?: QuestionDetailType }) => {
   const detailData = data && data?.data;
+  console.log(data);
   const { back } = useRouter();
 
   return (
     <section className="md:mb-[300px] mb-[150px]">
-      <div className="flex items-center px-[16px] mb:px-[30px] line-clamp-1 w-full h-[60px] rounded-full bg-[#F3F3F3] text-[18px] md:text-[22px] font-bold text-[#202020]">
+      <div className="flex items-center px-[16px] mb:px-[30px] line-clamp-1 w-full h-[60px] rounded-l-full bg-[#F3F3F3] text-[18px] md:text-[22px] font-bold text-[#202020]">
         {detailData?.question_title}
       </div>
       <div className="border-b-[1px] border-solid borer-[#F3F3F3] text-[12px] md:text-[16px] text-[#6E6E6E] font-medium w-full py-[20px] mb:py-[25px] flex items-center ml-[16px] mb:ml-[30px] gap-[16px] mb:gap-[40px]">

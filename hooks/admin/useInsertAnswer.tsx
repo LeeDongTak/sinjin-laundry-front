@@ -1,54 +1,60 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef } from "react";
-import useSession from "./useSession";
 
-export interface SigninType {
-  admin_id: string;
-  password: string;
-}
-
-const serverRequest = async (signinType: SigninType) => {
+const serverRequest = async ({
+  id,
+  content,
+}: {
+  id: string;
+  content: string;
+}) => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_LOCAL_BASE_URL}/admin-signin`,
+      `${process.env.NEXT_PUBLIC_LOCAL_BASE_URL}/answer/${id}`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ...signinType,
+          answer_content: content,
         }),
         credentials: "include",
       }
     );
-    if (!res?.ok) throw await res.json();
     const data = await res.json();
+    if (!res?.ok) throw res.body;
     return data;
   } catch (error) {
     throw error;
   }
 };
 
-const useAdminSignin = () => {
-  const { refetch } = useSession();
+const useInsertAnswer = () => {
+  const queryClient = useQueryClient();
   const { push } = useRouter();
   const { mutate, data, error } = useMutation({
-    mutationKey: ["admin-signin"],
+    mutationKey: ["insert_answer"],
     mutationFn: serverRequest,
     onSuccess: () => {
-      refetch();
+      queryClient.invalidateQueries({
+        queryKey: ["question_detail"],
+        exact: false,
+      });
     },
     onError: (error) => {
-      console.log(error.message);
+      if (error.message.includes("Unexpected token")) {
+        alert("로그인이 되어있지 않습니다");
+        push("/admin");
+      } else {
+        alert(error.message);
+      }
     },
   });
 
   return { mutate, data, error };
 };
 
-export default useAdminSignin;
+export default useInsertAnswer;

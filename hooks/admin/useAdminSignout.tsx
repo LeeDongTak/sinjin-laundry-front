@@ -1,28 +1,18 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef } from "react";
 import useSession from "./useSession";
 
-export interface SigninType {
-  admin_id: string;
-  password: string;
-}
-
-const serverRequest = async (signinType: SigninType) => {
+const serverRequest = async () => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_LOCAL_BASE_URL}/admin-signin`,
+      `${process.env.NEXT_PUBLIC_LOCAL_BASE_URL}/admin-signout`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          ...signinType,
-        }),
         credentials: "include",
       }
     );
@@ -34,11 +24,11 @@ const serverRequest = async (signinType: SigninType) => {
   }
 };
 
-const useAdminSignin = () => {
+const useAdminSignout = () => {
   const { refetch } = useSession();
   const { push } = useRouter();
   const { mutate, data, error } = useMutation({
-    mutationKey: ["admin-signin"],
+    mutationKey: ["admin-signout"],
     mutationFn: serverRequest,
     onSuccess: () => {
       refetch();
@@ -51,4 +41,4 @@ const useAdminSignin = () => {
   return { mutate, data, error };
 };
 
-export default useAdminSignin;
+export default useAdminSignout;

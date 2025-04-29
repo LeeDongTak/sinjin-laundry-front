@@ -34,7 +34,13 @@ export interface QuestionDetailType {
 const serverRequest = async (id: string) => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_LOCAL_BASE_URL}/question/detail/${id}`
+      `${process.env.NEXT_PUBLIC_LOCAL_BASE_URL}/question/detail/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
     );
 
     if (!res?.ok) throw await res.json();
@@ -68,6 +74,9 @@ const useFetchQuestionDetail = (id: string) => {
       if (error?.message.includes("비밀글")) {
         alert(error.message);
         push(`/qna/secret-detail/${id}`);
+      } else if (error?.message.includes("삭제")) {
+        alert(error.message);
+        back();
       } else {
         alert(error?.message);
         push("/qna");

@@ -177,7 +177,9 @@ const QnAAddMain = () => {
           id="description"
           placeholder="정기 세탁 견적 문의 드립니다"
           value={descriptionText}
-          className={clsx(inputCss, "w-[calc(100%-103px)] h-[206px] pt-[10px]")}
+          className={clsx(
+            "pl-[14px] border border-solid border-[#C6C6C6] w-[calc(100%-103px)] h-[206px] pt-[10px]"
+          )}
           onChange={(e) => onChangeText(e, "description")}
         />
       </div>
