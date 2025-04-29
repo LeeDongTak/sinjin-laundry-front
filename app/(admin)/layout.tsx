@@ -1,3 +1,4 @@
+import AdminLayout from "@/components/admin/AdminLayout";
 import SubLayout from "@/components/common/sub-layout";
 
 export default function Layout({
@@ -5,5 +6,5 @@ export default function Layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <section className="w-full h-full bg-[#f3f3f3]">{children}</section>;
+  return <AdminLayout>{children}</AdminLayout>;
 }

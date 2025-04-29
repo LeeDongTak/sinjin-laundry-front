@@ -20,12 +20,16 @@ const QnaMain = () => {
 const QnaContent = () => {
   const params = useSearchParams().get("page") ?? "1";
   const { push } = useRouter();
-  const { data } = useFetchQuestion(params);
+  const { data } = useFetchQuestion(params, "ALL");
   const question = data?.data?.question;
   const total = data?.data?.total;
 
-  const onClickDetailPage = (id: number) => {
-    push(`/qna/detail/${id}`);
+  const onClickDetailPage = (id: number, is_secret: number) => {
+    if (is_secret === 0) {
+      push(`/qna/detail/${id}`);
+    } else {
+      push(`/qna/secret-detail/${id}`);
+    }
   };
 
   const onClickAddQnA = () => {
@@ -50,7 +54,7 @@ const QnaContent = () => {
               <li
                 key={id}
                 className="w-full h-[45px] md:h-[60px] flex justify-between items-center border-b border-solid border-[#f3f3f3]"
-                onClick={() => onClickDetailPage(id)}
+                onClick={() => onClickDetailPage(id, is_secret)}
               >
                 <div className="w-[80%] md:w-[60%] flex justify-start items-center gap-[9px] md:gap-[18px]">
                   <span className="font-medium text-[16px]">{id}</span>

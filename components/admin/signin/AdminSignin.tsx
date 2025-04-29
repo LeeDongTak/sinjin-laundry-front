@@ -1,11 +1,10 @@
 "use client";
 import LogoSVG from "@/assets/svg/logo";
 import useAdminSignin from "@/hooks/admin/useAdminSignin";
+import useSession from "@/hooks/admin/useSession";
 import React, { useState } from "react";
 
 const AdminSignin = () => {
-  const hasSession = document.cookie;
-  console.log(hasSession);
   const [idText, setIdText] = useState("");
   const [pwText, setPwText] = useState("");
   const { mutate } = useAdminSignin();

@@ -41,14 +41,15 @@ const serverRequest = async (insertQuestionType: InsertQuestionType) => {
 
 const useInsertQuestion = () => {
   const queryClient = useQueryClient();
-  const { push } = useRouter();
+  const { back } = useRouter();
   const { mutate, data, error } = useMutation({
     mutationKey: ["insert_question"],
     mutationFn: serverRequest,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["question"] });
+    onSuccess: async () => {
       alert("질문이 등록되었습니다");
-      push("/qna?page=1");
+      back();
+      await new Promise((r) => setTimeout(r, 100));
+      queryClient.invalidateQueries({ queryKey: ["question"] });
     },
     onError: (error) => {
       alert(error.message);

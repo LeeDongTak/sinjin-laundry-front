@@ -20,10 +20,11 @@ interface QuestionType {
   message: string;
 }
 
-const serverRequest = async (params: string) => {
+const serverRequest = async (params: string, filter: string) => {
+  const is_answer = filter === "ALL" ? "" : `?is_answer=${filter}`;
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_LOCAL_BASE_URL}/question/${params}`
+      `${process.env.NEXT_PUBLIC_LOCAL_BASE_URL}/question/${params}${is_answer}`
     );
     if (!res?.ok) throw res;
     const data = await res.json();
@@ -34,10 +35,10 @@ const serverRequest = async (params: string) => {
   }
 };
 
-const useFetchQuestion = (params: string) => {
+const useFetchQuestion = (params: string, filter: string) => {
   const { data } = useQuery<QuestionType>({
-    queryKey: ["question", params],
-    queryFn: () => serverRequest(params),
+    queryKey: ["question", params, filter],
+    queryFn: () => serverRequest(params, filter),
   });
 
   return { data };
