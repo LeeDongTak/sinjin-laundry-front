@@ -60,27 +60,27 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full h-[320px] sm:h-[200px] bg-[#202020] text-[#585858]">
+    <footer className="w-full h-[320px] sm:h-[200px] bg-[#202020] text-[#787878]">
       <div className="w-full max-w-[1024px] h-full mx-auto px-[3%] sm:px-[5.7%] flex flex-col-reverse sm:flex-row justify-center gap-[30px] sm:justify-between items-start sm:items-center">
         <ul className="flex sm:hidden justify-end items-center gap-[20px] w-full">
           {MENU_LIST.map(({ id, name, url }) => {
             return (
-              <li key={id} className="text-[10px]">
+              <li key={id} className="text-[12px]">
                 <Link href={url}>{name}</Link>
               </li>
             );
           })}
         </ul>
-        <p className="sm:hidden h-[1px] w-full bg-[#585858]"></p>
+        <p className="sm:hidden h-[1px] w-full bg-[#787878]"></p>
         <ul>
           {FOOTER_LIST.map(({ id, title, description }) => {
             return (
               <li
                 key={id}
-                className="flex items-center justify-start gap-[4px] font-medium text-[10px]"
+                className="flex items-center justify-start gap-[4px] font-medium text-[12px]"
               >
                 <p>{title}</p>
-                <p className="w-[1px]"></p>
+                <p className="w-[1px] h-[4px] bg-[#787878] rounded-full"></p>
                 <p>{description}</p>
               </li>
             );
@@ -93,7 +93,7 @@ const Footer = () => {
           <ul className="hidden sm:flex justify-center items-center gap-[20px]">
             {MENU_LIST.map(({ id, name, url }) => {
               return (
-                <li key={id} className="text-[10px]">
+                <li key={id} className="text-[12px]">
                   <Link href={url}>{name}</Link>
                 </li>
               );

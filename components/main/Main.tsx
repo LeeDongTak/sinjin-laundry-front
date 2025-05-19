@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Kakaotalk from "../../assets/images/kakaotalk.png";
@@ -5,8 +6,22 @@ import Phone from "../../assets/images/phone.png";
 import Message from "../../assets/images/message.png";
 import Plus from "../../assets/images/plus_icon.png";
 import Lock from "../../assets/images/lock_icon.png";
+import { GALLERY_LIST } from "@/app/data/gallery";
+import { useRouter } from "next/navigation";
+import useFetchQuestion from "@/hooks/question/useFetchQuestion";
 
 const Main = () => {
+  const { push } = useRouter();
+  const { data } = useFetchQuestion("1", "ALL");
+  const questionList = data?.data?.question?.slice(0, 5) ?? [];
+
+  const onClickGalleryPage = () => {
+    push("/gallery");
+  };
+  const onClickQNAPage = () => {
+    push("/qna?page=1");
+  };
+
   return (
     <div>
       <main>
@@ -82,7 +97,10 @@ const Main = () => {
             <div>
               <div className="flex justify-between items-center">
                 <h3 className="font-bold text-lg">고객문의</h3>
-                <button className="flex items-center justify-center gap-[14px] w-[82px] h-[28px] rounded-[100px]  border-solid border-[#D9D9D9] border-2 text-[#787878] text-center]">
+                <button
+                  className="flex items-center justify-center gap-[14px] w-[82px] h-[28px] rounded-[100px]  border-solid border-[#D9D9D9] border-2 text-[#787878] text-center]"
+                  onClick={onClickQNAPage}
+                >
                   더보기
                   <Image src={Plus} alt="플러스아이콘"></Image>
                 </button>
@@ -91,72 +109,21 @@ const Main = () => {
                 className="rounded-[10px] shadow-[0_0_10px_rgba(0,0,0,0.15)]
                     p-[25px] mt-4 flex flex-col gap-[14px]"
               >
-                <div className="flex items-center gap-[10px]">
-                  <span
-                    className="bg-[#0E5AA9]
-                            p-1 text-xs rounded-[3px] text-center text-white"
-                  >
-                    공지
-                  </span>
-                  <p className="text-sm font-bold w-[150px] truncate">
-                    공지사항어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구
-                  </p>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-[9px]">
-                    <span className="w-1 h-1 rounded-full bg-[#D9D9D9]"></span>
-                    <p className="text-sm text-[#202020]">
-                      정기세탁 견적 문의드립니다
-                    </p>
-                  </div>
-                  <div>
-                    <Image src={Lock} alt=""></Image>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-[9px]">
-                    <span className="w-1 h-1 rounded-full bg-[#D9D9D9]"></span>
-                    <p className="text-sm text-[#202020]">
-                      Re:정기세탁 견적 문의드립니다
-                    </p>
-                  </div>
-                  <div>
-                    <Image src={Lock} alt=""></Image>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-[9px]">
-                    <span className="w-1 h-1 rounded-full bg-[#D9D9D9]"></span>
-                    <p className="text-sm text-[#202020] w-[210px] truncate">
-                      정기세탁 견적 문의드립니다어쩌구저쩌구저쩌구어
-                    </p>
-                  </div>
-                  <div>
-                    <Image src={Lock} alt=""></Image>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-[9px]">
-                    <span className="w-1 h-1 rounded-full bg-[#D9D9D9]"></span>
-                    <p className="text-sm text-[#202020] w-[210px] truncate">
-                      Re:정기세탁 견적 문의드립니다어쩌구저쩌구저쩌구
-                    </p>
-                  </div>
-                  <div>
-                    <Image src={Lock} alt=""></Image>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-[9px]">
-                    <span className="w-1 h-1 rounded-full bg-[#D9D9D9]"></span>
-                    <p className="text-sm text-[#202020] w-[210px] truncate">
-                      Re:정기세탁 견적 문의드립니다어쩌구저쩌구저쩌구
-                    </p>
-                  </div>
-                  <div>
-                    <Image src={Lock} alt=""></Image>
-                  </div>
-                </div>
+                {questionList.map(({ id, is_secret, question_title }) => {
+                  return (
+                    <div key={id} className="flex justify-between items-center">
+                      <div className="flex items-center gap-[9px]">
+                        <span className="w-1 h-1 rounded-full bg-[#D9D9D9]"></span>
+                        <p className="text-sm text-[#202020]">
+                          {question_title}
+                        </p>
+                      </div>
+                      <div>
+                        {is_secret && <Image src={Lock} alt=""></Image>}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
             {/* 갤러리 영역역 */}
@@ -171,49 +138,22 @@ const Main = () => {
 
               {/* img list 영역 */}
               <div className="mt-4">
-                <ul className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 gap-[10px] w-full">
-                  <li className="flex flex-col gap-[10px]">
-                    <a
-                      href=""
-                      className=" w-full aspect-square rounded-[5px] bg-[#E9E9E9]"
-                    ></a>
-                    <span>이미지설명...</span>
-                  </li>
-                  <li className="flex flex-col gap-[10px] ">
-                    <a
-                      href=""
-                      className="w-full aspect-square rounded-[5px] bg-[#E9E9E9]"
-                    ></a>
-                    <span>이미지설명...</span>
-                  </li>
-                  <li className="flex flex-col gap-[10px]">
-                    <a
-                      href=""
-                      className=" w-full aspect-square rounded-[5px] bg-[#E9E9E9]"
-                    ></a>
-                    <span>이미지설명...</span>
-                  </li>
-                  <li className="flex flex-col gap-[10px] ">
-                    <a
-                      href=""
-                      className="w-full aspect-square rounded-[5px] bg-[#E9E9E9]"
-                    ></a>
-                    <span>이미지설명...</span>
-                  </li>
-                  <li className="flex flex-col gap-[10px]">
-                    <a
-                      href=""
-                      className=" w-full aspect-square rounded-[5px] bg-[#E9E9E9]"
-                    ></a>
-                    <span>이미지설명...</span>
-                  </li>
-                  <li className="flex flex-col gap-[10px] w-full aspect-square">
-                    <a
-                      href=""
-                      className="w-full aspect-square rounded-[5px] bg-[#E9E9E9]"
-                    ></a>
-                    <span>이미지설명...</span>
-                  </li>
+                <ul
+                  className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 gap-[10px] w-full"
+                  onClick={onClickGalleryPage}
+                >
+                  {GALLERY_LIST.map(({ id, image, title }) => {
+                    return (
+                      <li key={id} className="flex flex-col gap-[10px]">
+                        <Image
+                          src={image}
+                          alt={`${title}이미지`}
+                          className="w-full aspect-square rounded-[5px] bg-[#E9E9E9]"
+                        />
+                        <span className="line-clamp-1">{title}</span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>
@@ -270,79 +210,45 @@ const Main = () => {
             max-w-[1024px] mx-auto"
           >
             <div className="flex flex-col gap-3 w-1/2">
-              <div className="flex justify-between items-center ">
+              <div className="flex justify-between items-center">
                 <h3 className="font-bold text-lg">고객문의</h3>
-                <button className="flex items-center justify-center gap-[14px] w-[82px] h-[28px] rounded-[100px]  border-solid border-[#D9D9D9] border-2 text-[#787878] text-center]">
+                <button
+                  className="flex items-center justify-center gap-[14px] w-[82px] h-[28px] rounded-[100px]  border-solid border-[#D9D9D9] border-2 text-[#787878] text-center]"
+                  onClick={onClickQNAPage}
+                >
                   더보기
                   <Image src={Plus} alt="플러스아이콘"></Image>
                 </button>
               </div>
-              <div
-                className="rounded-[10px] shadow-[0_0_10px_rgba(0,0,0,0.15)]
-                    p-[25px] flex flex-col "
-              >
-                <div className="flex items-center gap-[10px] mb-[18px]">
-                  <span
-                    className="bg-[#0E5AA9]
-                            p-1 text-xs rounded-[3px] text-center text-white"
-                  >
-                    공지
-                  </span>
-                  <p className="text-sm font-bold w-[200px] truncate">
-                    공지사항
-                  </p>
-                </div>
-                <div className="flex justify-between items-center mb-[14px]">
-                  <div className="flex items-center gap-[9px]">
-                    <span className="w-1 h-1 rounded-full bg-[#D9D9D9]"></span>
-                    <p className="text-sm text-[#202020]">
-                      정기세탁 견적 문의드립니다
-                    </p>
-                  </div>
-                  <div>
-                    <Image src={Lock} alt=""></Image>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center mb-[14px]">
-                  <div className="flex items-center gap-[9px]">
-                    <span className="w-1 h-1 rounded-full bg-[#D9D9D9]"></span>
-                    <p className="text-sm text-[#202020]">
-                      Re:정기세탁 견적 문의드립니다
-                    </p>
-                  </div>
-                  <div>
-                    <Image src={Lock} alt=""></Image>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center mb-[14px]">
-                  <div className="flex items-center gap-[9px]">
-                    <span className="w-1 h-1 rounded-full bg-[#D9D9D9]"></span>
-                    <p className="text-sm text-[#202020] w-[200px] truncate">
-                      정기세탁 견적 문의드립니다어쩌구저쩌구저쩌구어
-                    </p>
-                  </div>
-                  <div>
-                    <Image src={Lock} alt=""></Image>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-[9px]">
-                    <span className="w-1 h-1 rounded-full bg-[#D9D9D9]"></span>
-                    <p className="text-sm text-[#202020] w-[200px] truncate">
-                      Re:정기세탁 견적 문의드립니다어쩌구저쩌구저쩌구
-                    </p>
-                  </div>
-                  <div>
-                    <Image src={Lock} alt=""></Image>
-                  </div>
-                </div>
+              <div className="rounded-[10px] shadow-[0_0_10px_rgba(0,0,0,0.15)] min-h-[200px] p-[25px] flex flex-col ">
+                {questionList.map(({ id, is_secret, question_title }) => {
+                  return (
+                    <div
+                      key={id}
+                      className="flex justify-between items-center mb-[14px]"
+                    >
+                      <div className="flex items-center gap-[9px]">
+                        <span className="w-1 h-1 rounded-full bg-[#D9D9D9]"></span>
+                        <p className="text-sm text-[#202020] line-clamp-1">
+                          {question_title}
+                        </p>
+                      </div>
+                      <div>
+                        {is_secret && <Image src={Lock} alt=""></Image>}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
             {/* 갤러리 영역역 */}
             <div className="w-1/2 flex flex-col gap-3">
               <div className="flex justify-between items-center">
                 <h3 className="font-bold text-lg">갤러리</h3>
-                <button className="flex items-center justify-center gap-[14px] w-[82px] h-[28px] rounded-[100px]  border-solid border-[#D9D9D9] border-2 text-[#787878] text-center">
+                <button
+                  className="flex items-center justify-center gap-[14px] w-[82px] h-[28px] rounded-[100px]  border-solid border-[#D9D9D9] border-2 text-[#787878] text-center"
+                  onClick={onClickGalleryPage}
+                >
                   더보기
                   <Image src={Plus} alt="플러스아이콘"></Image>
                 </button>
@@ -353,46 +259,22 @@ const Main = () => {
                 className="flex shadow-[0_0_10px_rgba(0,0,0,0.15)]
                     rounded-[10px] p-[25px] h-full overflow-hidden"
               >
-                <ul className="flex justify-center  gap-[14px] h-full">
-                  <li className="flex flex-col gap-[14px] ">
-                    <a
-                      href=""
-                      className="w-[108px] h-[108px]
-                                rounded-[5px] bg-[#E9E9E9]"
-                    ></a>
-                    <span>이미지설명...</span>
-                  </li>
-                  <li className="flex flex-col gap-[14px]">
-                    <a
-                      href=""
-                      className="w-[108px] h-[108px]
-                                rounded-[5px] bg-[#E9E9E9]"
-                    ></a>
-                    <span>이미지설명...</span>
-                  </li>
-                  <li className="flex flex-col gap-[14px]">
-                    <a
-                      href=""
-                      className="w-[108px] h-[108px]
-                                rounded-[5px] bg-[#E9E9E9]"
-                    ></a>
-                    <span>이미지설명...</span>
-                  </li>
-                  {/*  <li className="flex flex-col gap-[14px]">
-                                <a href="" className="w-[108px] h-[108px]
-                                rounded-[5px] bg-[#E9E9E9]"></a>
-                                <span>이미지설명...</span>
-                            </li>
-                            <li className="flex flex-col gap-[14px]">
-                                <a href="" className="w-[108px] h-[108px]
-                                rounded-[5px] bg-[#E9E9E9]"></a>
-                                <span>이미지설명...</span>
-                            </li>
-                            <li className="flex flex-col gap-[14px]">
-                                <a href="" className="w-[108px] h-[108px]
-                                rounded-[5px] bg-[#E9E9E9]"></a>
-                                <span>이미지설명...</span>
-                            </li> */}
+                <ul className="flex justify-center gap-[14px] h-full shrink-0">
+                  {GALLERY_LIST.map(({ id, image, title }) => {
+                    return (
+                      <li
+                        key={id}
+                        className="w-[108px] flex flex-col gap-[10px]"
+                      >
+                        <Image
+                          src={image}
+                          alt={`${title}이미지`}
+                          className="w-[108px] h-[108px] rounded-[5px] bg-[#E9E9E9]"
+                        />
+                        <span className="line-clamp-1">{title}</span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>
