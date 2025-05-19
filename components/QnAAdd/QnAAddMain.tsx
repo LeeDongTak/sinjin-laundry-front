@@ -159,7 +159,6 @@ const QnAAddMain = () => {
           type="text"
           id="title"
           value={titleText}
-          placeholder="정기 세탁 견적 문의 드립니다"
           className={clsx(inputCss, "w-[calc(100%-103px)]")}
           onChange={(e) => onChangeText(e, "title")}
         />
@@ -177,6 +176,7 @@ const QnAAddMain = () => {
           id="description"
           placeholder="정기 세탁 견적 문의 드립니다"
           value={descriptionText}
+          rows={5}
           className={clsx(
             "pl-[14px] border border-solid border-[#C6C6C6] w-[calc(100%-103px)] h-[206px] pt-[10px]"
           )}
